@@ -1,0 +1,30 @@
+body, html {
+    font-family:$main-font, sans-serif;
+}
+
+h1, h2, h3, a, p {
+    font-family:$main-font, sans-serif;
+}
+
+h1 {
+    font-size:2.2em;
+    color:$font-color;
+}
+
+p {
+    margin:0;
+    color:#222;
+}
+
+a {
+    color:lighten($font-color, 20%);
+    text-decoration:none;
+}
+
+.darker {
+    color:lighten($font-color, 15%);
+}
+
+label {
+    font-size:0.9em;
+}

@@ -1,0 +1,111 @@
+/* style.scss */
+@import "fonts";
+
+$main-color: #242B35;
+$main-font: 'roboto';
+
+$font-color: #545D69;
+
+$page-width: 760px;
+
+body {
+    margin:0;
+    background-color: $main-color;
+}
+
+@import "text";
+
+.main {
+    margin-left:auto;
+    margin-right:auto;
+
+    width:$page-width;
+}
+
+.header {
+    width:100%;
+    margin-top:15px;
+
+    h1 {
+        display:inline;
+    }
+}
+
+.blocks {
+    margin-top:10px;
+
+    .block {
+        background-color:lighten($main-color, 20%);
+        outline:1px solid adjust_hue(lighten($main-color, 20%), -5deg);
+        display:none;
+
+        margin-bottom:16px;
+
+        .content {
+            padding:8px;
+        }
+
+        .link-block {
+            display:block;
+            margin-top:5px;
+
+            background-color:lighten(lighten($main-color, 20%), 5%);
+            outline:1px solid lighten($main-color, 17%);
+
+            width:100%;
+
+            .padding {
+                padding:3px;
+            }
+
+            .listening:not(.paused) {
+                background-image:url('../img/headphones.png');
+                background-repeat:no-repeat;
+                background-position:98%;
+            }
+
+            .listening.paused {
+                background-image:url('../img/pause.png');
+                background-repeat:no-repeat;
+                background-position:98%;
+            }
+        }
+    }
+
+    .form-box {
+        width:40%;
+        height:110px;
+    }
+
+}
+
+.padding-top {
+    margin-top:10px;
+}
+
+input {
+    background-color:lighten(lighten($main-color, 20%), 5%);
+    outline:1px solid lighten($main-color, 17%);
+    border:0;
+
+    padding:3px;
+
+    float:right;
+}
+
+button {
+    background-color:lighten(lighten($main-color, 20%), 5%);
+    outline:1px solid lighten($main-color, 17%);
+    border:0;
+    padding:3px 10px 3px 10px;
+
+    cursor:pointer;
+}
+
+.form-part {
+    margin-bottom:10px;
+}
+
+.float-right {
+    float:right;
+}

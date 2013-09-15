@@ -1,0 +1,13 @@
+/* fonts.scss */
+$font-base: '../fonts/';
+
+@font-face {
+    font-family: 'roboto';
+    src: url($font-base + 'roboto-regular-webfont.eot');
+    src: url($font-base + 'roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url($font-base + 'roboto-regular-webfont.woff') format('woff'),
+         url($font-base + 'roboto-regular-webfont.ttf') format('truetype'),
+         url($font-base + 'roboto-regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

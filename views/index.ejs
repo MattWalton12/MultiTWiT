@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <script type="text/javascript" src="static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="static/js/main.js"></script>
+
+        <title>MultiTWiT</title>
+    </head>
+
+    <body>
+        <div class="main">
+
+            <div class="header">
+                <h1 class="title">MultiTWiT</h1>
+            </div>
+
+            <div class="blocks">
+
+                <div class="block" id="listening">
+                    <div class="content">
+                        <p>currently listening:</p>
+
+                        <%for (i=0;i<current.length;i++) {%>
+                            <a class="link-block" href="#" id="<%=current[i].identifier%>-<%=current[i].id%>" data-show="<%=current[i].identifier%>" data-id="<%=current[i].id%>" data-time="<%=current[i].progress%>" data-duration="<%=current[i].duration%>">
+                                <div class="padding">
+                                    [<%=current[i].identifier%>-<%=current[i].id%>] <%=current[i].title%>
+                                    <span class="darker"> (<span id="percentage"><%=Math.round(100 * (current[i].progress / current[i].duration))%></span>% complete)</span>
+                                </div>
+                            </a>
+                        <%}%>
+                    </div>
+                </div>
+
+                <%if (un_listened.length > 0) {%>
+                    <div class="block" id="un-listened">
+                        <div class="content">
+                            <p>un-listened:</p>
+
+                            <%for (i=0;i<un_listened.length;i++) {%>
+                                <a class="link-block" href="#" data-show="<%=un_listened[i].identifier%>" data-id="<%=un_listened[i].id%>" id="<%=un_listened[i].identifier%>-<%=un_listened[i].id%>" data-duration="<%=un_listened[i].duration%>">
+                                    <div class="padding">[<%=un_listened[i].identifier%>-<%=un_listened[i].id%>] <%=un_listened[i].title%></div>
+                                </a>
+                            <%}%>
+                        </div>
+                    </div>
+                <%}%>
+
+                <a href="#" id="add-button">add show</a>
+
+                <div class="block form-box padding-top" id="add-shows">
+                    <div class="content">
+                        <div class="form-part"><label>show name:</label> <input type="text" id="add-name" name="name"></div>
+                        <div class="form-part"><label>show handle:</label> <input type="text" id = "add-id" name="id"></div>
+
+                        <button id="add-cancel" class="float-right">cancel</button>
+                        <button id="add-submit" class="float-right">add</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>

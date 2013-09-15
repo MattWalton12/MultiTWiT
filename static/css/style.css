@@ -1,0 +1,99 @@
+/* style.scss */
+/* fonts.scss */
+@font-face {
+  font-family: 'roboto';
+  src: url("../fonts/roboto-regular-webfont.eot");
+  src: url("../fonts/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-regular-webfont.woff") format("woff"), url("../fonts/roboto-regular-webfont.ttf") format("truetype"), url("../fonts/roboto-regular-webfont.svg#robotoregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  margin: 0;
+  background-color: #242b35; }
+
+body, html {
+  font-family: "roboto", sans-serif; }
+
+h1, h2, h3, a, p {
+  font-family: "roboto", sans-serif; }
+
+h1 {
+  font-size: 2.2em;
+  color: #545d69; }
+
+p {
+  margin: 0;
+  color: #222; }
+
+a {
+  color: #85909e;
+  text-decoration: none; }
+
+.darker {
+  color: #778392; }
+
+label {
+  font-size: 0.9em; }
+
+.main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 760px; }
+
+.header {
+  width: 100%;
+  margin-top: 15px; }
+  .header h1 {
+    display: inline; }
+
+.blocks {
+  margin-top: 10px; }
+  .blocks .block {
+    background-color: #4d5c72;
+    outline: 1px solid #4d5f72;
+    display: none;
+    margin-bottom: 16px; }
+    .blocks .block .content {
+      padding: 8px; }
+    .blocks .block .link-block {
+      display: block;
+      margin-top: 5px;
+      background-color: #586981;
+      outline: 1px solid #475569;
+      width: 100%; }
+      .blocks .block .link-block .padding {
+        padding: 3px; }
+      .blocks .block .link-block .listening:not(.paused) {
+        background-image: url("../img/headphones.png");
+        background-repeat: no-repeat;
+        background-position: 98%; }
+      .blocks .block .link-block .listening.paused {
+        background-image: url("../img/pause.png");
+        background-repeat: no-repeat;
+        background-position: 98%; }
+  .blocks .form-box {
+    width: 40%;
+    height: 110px; }
+
+.padding-top {
+  margin-top: 10px; }
+
+input {
+  background-color: #586981;
+  outline: 1px solid #475569;
+  border: 0;
+  padding: 3px;
+  float: right; }
+
+button {
+  background-color: #586981;
+  outline: 1px solid #475569;
+  border: 0;
+  padding: 3px 10px 3px 10px;
+  cursor: pointer; }
+
+.form-part {
+  margin-bottom: 10px; }
+
+.float-right {
+  float: right; }
