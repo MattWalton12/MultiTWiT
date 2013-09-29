@@ -1,0 +1,12 @@
+{
+    "name" : "MultiTwit",
+    "version" : "0.1.5",
+    "author" : "Matt Walton (matt-walton.net)",
+    "description" : "A simple web based podcast manager.",
+
+    "dependencies" : {
+        "express" : "3.4.x",
+        "mongoose" : "3.6.x",
+        "xml2js" : "0.2.x"
+    }
+}

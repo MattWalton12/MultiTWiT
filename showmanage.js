@@ -1,3 +1,7 @@
+exports.exceptions = {
+    "ttg" : "kfi"
+};
+
 exports.currentlyUpdating = [];
 
 exports.init = function(mt) {
@@ -5,7 +9,7 @@ exports.init = function(mt) {
         var show = req.query.show;
         var name = req.query.name;
 
-        if (!show || !name || show.length < 3 || name.length < 5) {
+        if (!show || !name || show.length < 2 || name.length < 5) {
             res.send(400);
             res.end("Invalid parameters.");
             return;
@@ -26,8 +30,8 @@ exports.init = function(mt) {
 
                 res.send(201);
 
-                mt.fs.mkdirSync(__dirname + "/storage/" + id);
-                mt.showmanage.checkShow(nShow);
+                mt.fs.mkdirSync(__dirname + "/storage/" + show);
+                mt.showmanage.checkShow(mt, nShow);
             }
         });
     });
@@ -61,8 +65,13 @@ function parseDuration(str) {
 exports.checkShow = function(mt, show) {
     console.log("Checking for updates for '" + show.identifier + "'");
     var handle = show.identifier;
+    var urlHandle = handle;
 
-    mt.http.get("http://feeds.twit.tv/" + handle.toLowerCase() + ".xml", function(res) {
+    if (mt.showmanage.exceptions[handle]) {
+        urlHandle = mt.showmanage.exceptions[handle];
+    }
+
+    mt.http.get("http://feeds.twit.tv/" + urlHandle.toLowerCase() + ".xml", function(res) {
         var data = "";
         res.on("data", function(body) {
             data += body.toString();
@@ -73,13 +82,18 @@ exports.checkShow = function(mt, show) {
                 var string = result.rss.channel[0].item[0].title[0].toString();
                 var link = result.rss.channel[0].item[0].link[0].toString().replace("http://www.podtrac.com/pts/redirect.mp3/", "http://");
                 var durationString = result.rss.channel[0].item[0]['itunes:duration'].toString();
+                var id = result.rss.channel[0].item[0].comments[0].toString().split("/").pop();
+
 
                 var duration = parseDuration(durationString);
 
                 var ps = string.split(":");
 
                 var title = ps[1].substring(1);
-                var id = ps[0].split(" ")[1];
+
+                if (handle.toLowerCase() == "ttg") {
+                    title = "The Tech Guy";
+                }
 
                 mt.episodes.findOne({identifier: show.identifier, id: parseInt(id)}, function(err, data) {
                     if (data) {
@@ -115,7 +129,6 @@ exports.checkShow = function(mt, show) {
 
                     }
                 });
-
             });
         });
 
